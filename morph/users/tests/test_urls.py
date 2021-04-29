@@ -12,6 +12,14 @@ import pytest
 pytestmark = pytest.mark.django_db
 
 
+def test_detail(user: User):
+    assert (
+        reverse("users:detail", kwargs={"username": user.username})
+        == f"/users/{user.username}/"
+    )
+    assert resolve(f"/users/{user.username}/").view_name == "users:detail"
+
+
 def test_login():
     assert reverse("users:login") == "/users/login/"
     assert resolve("/users/login/").view_name == "users:login"
