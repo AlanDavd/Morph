@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}
+
+{% trans "Signup" %}{% endblock %} {% block inner %}
+
+<h1>{% trans "Sign Up" %}</h1>
+
+{% block content %}
+  <form
+    class="signup"
+    id="signup_form"
+    method="post"
+    action="{% url 'users:signup' %}"
+  >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">
+      {% trans "Sign Up" %} &raquo;
+    </button>
+  </form>
+{% endblock %}
+
+{% endblock %}

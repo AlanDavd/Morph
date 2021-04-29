@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block head_title %}
+  {% trans "Feed" %}
+{% endblock %}
+{% block inner %}
+<h1>{% trans "Pictures Feed" %}</h1>
+
+{% block content %}
+  <div class="container">
+    <div class="row mt-2">
+      <form method="post" class="col-sm-12 col-md-8 offset-md-2 p-0 post-container">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ post }}"?</p>
+        <input class="btn btn-primary btn-block mb-5" type="submit" value="Confirm" />
+      </form>
+    </div>
+    <img style="width: 100%;" class="mb-5" src="{{ post.image.url }}" alt="{{ post.title }}">
+  </div>
+{% endblock %}
+{% endblock %}

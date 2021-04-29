@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block head_title %}
+  {% trans "CreateNewPost" %}
+{% endblock %}
+{% block inner %}
+<h1>{% trans "Add a picture" %}</h1>
+
+{% block content %}
+  <div class="container">
+      <div class="row justify-content-md-center">
+          <div class="col-6 pt-3 pb-3" id="profile-box">
+              <h4 class="mb-4">Add a new picture!</h4>
+              <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="hidden" name="owner" value="{{ user.pk }}" />
+                  {# Website field #}
+                  <div class="form-group">
+                      <input
+                          class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                          type="text"
+                          name="title"
+                          placeholder="Title"
+                      >
+                      <div class="invalid-feedback">
+                          {% for error in form.title.errors %}{{ error }}{% endfor %}
+                      </div>
+                  </div>
+                  {# Picture field #}
+                  <div class="form-group">
+                      <label>Choose your picture:</label>
+                      <input
+                          class="form-control {% if form.image.errors %}is-invalid{% endif %}"
+                          type="file"
+                          name="image"
+                          placeholder="picture"
+                          multiple
+                      >
+                      <div class="invalid-feedback">
+                          {% for error in form.image.errors %}{{ error }}{% endfor %}
+                      </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block mt-5">Publish!</button>
+              </form>
+          </div>
+      </div>
+  </div>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}
+  {% trans "Detail" %}
+{% endblock %}
+{% block inner %}
+
+<h1>{% trans "Detail" %}</h1>
+
+  {% block content %}
+    <div class="container mb-5" style="margin-top: 8em;">
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 style="font-weight: 100;">
+                    {{ user.username }}
+                </h2>
+                <div class="row mt-4">
+                    <div class="col-sm-12">
+                        <p>{{ user.first_name }}</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <p>{{ user.last_name }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  {% endblock %}
+
+{% endblock %}
