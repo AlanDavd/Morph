@@ -10,9 +10,10 @@ User = get_user_model()
 
 class CustomUserAdmin(UserAdmin):
     """Admin user model."""
-    list_display = ('email', 'username', 'first_name', 'last_name', 'is_staff')
-    list_filter = ('is_staff',)
-    search_fields = ('username',)
+
+    list_display = ("email", "username", "first_name", "last_name", "is_staff")
+    list_filter = ("is_staff",)
+    search_fields = ("username",)
 
 
 admin.site.register(User, CustomUserAdmin)

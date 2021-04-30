@@ -3,9 +3,6 @@
 # Django
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField
-from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
@@ -15,17 +12,15 @@ class User(AbstractUser):
     """
 
     email = models.EmailField(
-        'email address',
+        "email address",
         unique=True,
-        error_messages={
-            'unique': 'A user with that email already exists.'
-        }
+        error_messages={"unique": "A user with that email already exists."},
     )
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username", "first_name", "last_name"]
 
-    name = models.CharField('Name of User', blank=True, max_length=255)  # Little hack
+    name = models.CharField("Name of User", blank=True, max_length=255)  # Little hack
 
     def __str__(self):
         """Return username."""

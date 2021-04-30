@@ -24,11 +24,13 @@ class TestUserCreationForm:
         """
 
         # The user already exists, hence cannot be created.
-        form = UserCreationForm({
-            "username": user.username,
-            "password": user.password,
-            "password_confirmation": user.password,
-        })
+        form = UserCreationForm(
+            {
+                "username": user.username,
+                "password": user.password,
+                "password_confirmation": user.password,
+            }
+        )
 
         assert not form.is_valid()
         assert len(form.errors) == 4
@@ -44,11 +46,13 @@ class TestUserCreationForm:
         """
 
         # The user already exists, hence cannot be created.
-        form = UserCreationForm({
-            "username": user.username,
-            "password": user.password,
-            "password_confirmation": user.password,
-        })
+        form = UserCreationForm(
+            {
+                "username": user.username,
+                "password": user.password,
+                "password_confirmation": user.password,
+            }
+        )
 
         assert not form.is_valid()
         assert len(form.errors) == 4

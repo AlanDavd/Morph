@@ -1,11 +1,11 @@
 """Factory tests."""
 
+# Factory
+from factory import Faker
+from factory.django import DjangoModelFactory
+
 # Model
 from morph.pictures.models import Post
-
-# Factory
-from factory import Faker, post_generation
-from factory.django import DjangoModelFactory
 
 
 class PostFactory(DjangoModelFactory):

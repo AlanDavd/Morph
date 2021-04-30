@@ -1,13 +1,10 @@
 """User URLs related tests."""
 
-# Django
-from django.urls import resolve, reverse
-
-# Models
-from morph.pictures.models import Post
-
 # Pytest
 import pytest
+
+# Django
+from django.urls import resolve, reverse
 
 pytestmark = pytest.mark.django_db
 

@@ -18,9 +18,9 @@ User = get_user_model()
 class SignUpView(FormView):
     """Users sign up view creates a normal (non admin) user."""
 
-    template_name = 'users/signup.html'
+    template_name = "users/signup.html"
     form_class = UserCreationForm
-    success_url = reverse_lazy('users:login')
+    success_url = reverse_lazy("users:login")
 
     def form_valid(self, form):
         """Save form data."""
@@ -30,22 +30,25 @@ class SignUpView(FormView):
 
 class LoginView(auth_views.LoginView):
     """Users sign up view."""
-    template_name = 'users/login.html'
+
+    template_name = "users/login.html"
 
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     """Log out view."""
-    template_name = 'pages/logged_out.html'
+
+    template_name = "pages/logged_out.html"
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     """User detail view."""
+
     # model = User
-    template_name = 'users/detail.html'
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+    template_name = "users/detail.html"
+    slug_field = "username"
+    slug_url_kwarg = "username"
     queryset = User.objects.all()
-    context_object_name = 'user'
+    context_object_name = "user"
 
     def get_context_data(self, **kwargs):
         """Add extra info to context."""
@@ -57,6 +60,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """User update view allows logged in user to update
     it's information.
     """
+
     model = User
     fields = ["username"]
     success_message = _("Information successfully updated")
@@ -70,6 +74,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
     """Redirect view to detail view."""
+
     permanent = False
 
     def get_redirect_url(self):

@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 class PicturesConfig(AppConfig):
     """Pictures app."""
+
     name = "morph.pictures"
     verbose_name = _("Pictures")
 
