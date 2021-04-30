@@ -1,8 +1,5 @@
 """Pictures views."""
 
-# Tasks
-from morph.pictures.tasks import bulk_image_uploading
-
 # Django
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
