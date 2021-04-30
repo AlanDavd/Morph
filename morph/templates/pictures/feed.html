@@ -7,8 +7,12 @@
 <h1>{% trans "Pictures Feed" %}</h1>
 
 {% block content %}
-  <div class="container">
+  <div class="container content">
     <div class="row">
+      <button type="submit" class="btn" id="bulkBtn">Bulk Delete</button>
+    </div>
+    <div class="row">
+      {% csrf_token %}
       {% for post in posts %}
         <div class="col-sm-12 col-md-8 offset-md-2 mb-3 p-0 post-container">
           <div class="media pt-3 pl-3 pb-1">
@@ -21,6 +25,7 @@
             <b>{{ post.title }}</b> - <small>{{ post.created }}</small>
           </p>
           <a class="ml-2 mt-0 mb-2" href="{% url 'pictures:delete' post.pk %}">Delete?</a>
+          <input type="checkbox" name="post_id[]" value="{{ post.id }}" id="deletePost" />
         </div>
       {% endfor %}
     </div>

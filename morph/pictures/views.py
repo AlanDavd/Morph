@@ -5,10 +5,11 @@ from morph.pictures.tasks import bulk_image_uploading
 
 # Django
 from django.contrib.auth import get_user_model
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView, DeleteView, View
 
 # Forms
 from morph.pictures.forms import PostForm
@@ -46,12 +47,26 @@ class CreatePostView(LoginRequiredMixin, CreateView):
 
 
 class PostsFeedView(LoginRequiredMixin, ListView):
-    """Return all published posts."""
-    template_name = 'pictures/feed.html'
+    """Return all published posts and a way to bulk delete them."""
     model = Post
     ordering = ('-created',)
-    paginate_by = 10
+    paginate_by = 30
     context_object_name = 'posts'
+    template_name = 'pictures/feed.html'
+
+    def get(self, request, *args, **kwargs):
+        """Return all posts."""
+        return super(PostsFeedView, self).get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        """Perform bulk delete of selected entries."""
+        if request.method == "POST":
+            post_ids = request.POST.getlist("id[]")
+            filtered = filter(lambda id: id != 'on', post_ids)
+            for id in filtered:
+                post = Post.objects.get(pk=id)
+                post.delete()
+            return render(request, "pictures/feed.html", {})
 
 
 class DeletePost(LoginRequiredMixin, DeleteView):
