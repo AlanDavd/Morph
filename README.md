@@ -6,7 +6,7 @@
 
 Morph is an image library built to showcase my skills for the Shopify Backend Developer Intern Challenge.
 
-Now, I'll describe what the project can do:
+This is what the project can do:
 
 **User**:
 
@@ -29,7 +29,7 @@ Project is deployed in AWS with a S3 bucket and an EC2 instance. It runs the lin
 
 ## Demo
 
-You can see the working project [here](!https://projecttest.fun/). To make it quick, you can use the following credentials to access the project (This user is not an admin):
+You can see the working project [here](https://projecttest.fun/). To make it quick, you can use the following credentials to access the project (This user is not an admin):
 
 - Email: alan@project.com
 - Password: rChb6KVYmLe
