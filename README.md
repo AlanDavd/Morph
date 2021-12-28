@@ -25,17 +25,6 @@ You can
 - Delete one image
 - Bulk delete images
 
-Project is deployed in AWS with a S3 bucket and an EC2 instance. It runs the linter and tests when pushed to GitHub via GitHub actions.
-
-## Demo
-
-You can see the working project [here](https://projecttest.fun/). To make it quick, you can use the following credentials to access the project (This user is not an admin):
-
-- Email: alan@project.com
-- Password: rChb6KVYmLe
-
-You can also try all the user management system ;).
-
 ## Run Project
 
 Install and run Morph with Docker
